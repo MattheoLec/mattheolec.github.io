@@ -18,6 +18,7 @@ export default [
 		school: "Nantes University",
 		location: "Nantes, France",
 		date: "Sep 2019 ‐ May 2022",
-		description: "Specializing in a wide range of subjects related to software development, algorithms and system architecture.",
-	}
+		description:
+			"Specializing in a wide range of subjects related to software development, algorithms and system architecture.",
+	},
 ];

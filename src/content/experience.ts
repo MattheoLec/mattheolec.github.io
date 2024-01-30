@@ -11,11 +11,7 @@ export default [
 			"Integrated a visualization feature to display the knowledge graph generated from query results.",
 			"Maintained the application architecture all along its evolution.",
 		],
-		skills: [
-			"Vuejs",
-			"TypeScript",
-			"Tailwind CSS",
-		],
+		skills: ["Vuejs", "TypeScript", "Tailwind CSS"],
 	},
 	{
 		title: "Front‐End Developer",
@@ -28,12 +24,6 @@ export default [
 			"Upgraded React components to incorporate new features and ensure seamless integration within the platform.",
 			"Upgraded legacy Angular pages to React, modernizing the codebase and improving performance and maintainability.",
 		],
-		skills: [
-			"React",
-			"JavaScript",
-			"CSS",
-			"HTML",
-			"Large-Scale Teamwork",
-		],
+		skills: ["React", "JavaScript", "CSS", "HTML", "Large-Scale Teamwork"],
 	},
 ];

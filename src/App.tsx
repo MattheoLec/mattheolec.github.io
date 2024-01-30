@@ -1,5 +1,5 @@
-import profile_picture from './assets/profile_picture.jpg';
-import {ReactSVG} from "react-svg";
+import profile_picture from "./assets/profile_picture.jpg";
+import { ReactSVG } from "react-svg";
 import links from "./content/links.ts";
 import education from "./content/education.ts";
 import {
@@ -12,20 +12,16 @@ import {
 	CardBody,
 	Switch,
 	CardHeader,
-	Chip
+	Chip,
 } from "@nextui-org/react";
-import {useTheme} from "next-themes";
+import { useTheme } from "next-themes";
 
 function App() {
 	const { theme, setTheme } = useTheme();
 	return (
-		<main
-			className="flex flex-col w-full bg-gradient-to-br from-indigo-200 via-red-200 to-yellow-100 dark:bg-none
-			dark:bg-gray-900 overflow-x-hidden"
-		>
-			<Navbar maxWidth="full" className="fixed bg-black bg-opacity-10 z-50">
-				<NavbarContent justify="start">
-				</NavbarContent>
+		<main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-br from-indigo-200 via-red-200 to-yellow-100 dark:bg-gray-900 dark:bg-none">
+			<Navbar maxWidth="full" className="fixed z-50 bg-black bg-opacity-10">
+				<NavbarContent justify="start"></NavbarContent>
 				<NavbarContent justify="center">
 					<NavbarItem>
 						<Button color="primary" variant="light" className="text-md font-semibold">
@@ -55,56 +51,32 @@ function App() {
 				</NavbarContent>
 				<NavbarContent justify="end">
 					<Switch
-						isSelected={theme === 'dark'}
-						onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+						isSelected={theme === "dark"}
+						onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
 						size="lg"
 						color="secondary"
-						thumbIcon={({isSelected}) =>
+						thumbIcon={({ isSelected }) =>
 							isSelected ? (
-								<ReactSVG src="src/assets/moon.svg" className="w-[80%] fill-[#7828c8]"/>
+								<ReactSVG src="src/assets/moon.svg" className="w-[80%] fill-[#7828c8]" />
 							) : (
-								<ReactSVG src="src/assets/sun.svg" className="w-[80%] fill-gray-800"/>
+								<ReactSVG src="src/assets/sun.svg" className="w-[80%] fill-gray-800" />
 							)
 						}
-					>
-					</Switch>
+					></Switch>
 				</NavbarContent>
 			</Navbar>
-			<div className="relative flex justify-center items-center min-h-screen">
-				<div
-					className="absolute h-48 w-64 top-0 right-0 translate-x-[10%] -rotate-12 blur-3xl opacity-0
-					dark:opacity-50 bg-gradient-to-tr from-indigo-900 to-gray-800"
-				></div>
-				<div
-					className="absolute h-96 w-[46rem] rounded-full bottom-0 right-0 -translate-x-1/4 translate-y-1/3
-					-rotate-[30deg] blur-3xl opacity-0 dark:opacity-25 bg-gradient-to-bl from-purple-900 to-gray-700"
-				></div>
-				<div
-					className="absolute h-64 w-[32rem] rounded-full top-0 left-0 -rotate-[20deg] blur-3xl opacity-0
-					dark:opacity-25 bg-gradient-to-bl from-purple-900 to-gray-700"
-				></div>
+			<div className="relative flex min-h-screen items-center justify-center">
+				<div className="absolute right-0 top-0 h-48 w-64 translate-x-[10%] -rotate-12 bg-gradient-to-tr from-indigo-900 to-gray-800 opacity-0 blur-3xl dark:opacity-50"></div>
+				<div className="absolute bottom-0 right-0 h-96 w-[46rem] -translate-x-1/4 translate-y-1/3 -rotate-[30deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0 blur-3xl dark:opacity-25"></div>
+				<div className="absolute left-0 top-0 h-64 w-[32rem] -rotate-[20deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0 blur-3xl dark:opacity-25"></div>
 				<div className="relative flex items-center">
-					<div
-						className="absolute h-48 w-1/2 top-2/3 -translate-y-1/2 left-0 -translate-x-[10%] opacity-20
-						dark:opacity-60 blur-3xl rotate-[15deg] bg-gradient-to-tr from-red-900 to-purple-900"
-					>
-					</div>
-					<div className="w-full max-w-xl z-10">
-						<h1
-							className="text-4xl font-mono font-extrabold relative w-[max-content] before:absolute
-							before:inset-0 before:bg-gray-900 before:animate-typewriter whitespace-nowrap
-							after:absolute after:inset-0 after:w-1 after:bg-gray-900 after:dark:bg-gray-100
-							after:animate-cursor"
-						>
+					<div className="absolute left-0 top-2/3 h-48 w-1/2 -translate-x-[10%] -translate-y-1/2 rotate-[15deg] bg-gradient-to-tr from-red-900 to-purple-900 opacity-20 blur-3xl dark:opacity-60"></div>
+					<div className="z-10 w-full max-w-xl">
+						<h1 className="relative w-[max-content] whitespace-nowrap font-mono text-4xl font-extrabold text-gray-800 before:absolute before:inset-0 before:animate-typewriter before:bg-gray-900 after:absolute after:inset-0 after:w-1 after:animate-cursor after:bg-gray-900 dark:text-gray-100 after:dark:bg-gray-100">
 							Hello, I'm
 						</h1>
-						<div
-							className="flex flex-col"
-						>
-							<p
-								className="text-5xl font-mono font-extrabold text-transparent bg-clip-text
-								bg-gradient-to-r from-purple-600 to-orange-500"
-							>
+						<div className="flex flex-col">
+							<p className="bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text font-mono text-5xl font-extrabold text-transparent">
 								Matthéo Lécrivain
 							</p>
 							<p className="py-4">
@@ -114,7 +86,7 @@ function App() {
 							<div className="flex space-x-2">
 								<Button
 									color="primary"
-									className="text-md font-semibold bg-orange-500 dark:bg-indigo-800 shadow-md"
+									className="text-md bg-orange-500 font-semibold shadow-md dark:bg-indigo-800"
 								>
 									Resume
 								</Button>
@@ -132,7 +104,7 @@ function App() {
 								>
 									<ReactSVG
 										src="src/assets/github.svg"
-										className="w-10 fill-secondary dark:fill-gray-100 flex items-center shadow-md"
+										className="flex w-10 items-center fill-secondary shadow-md dark:fill-gray-100"
 									/>
 								</Button>
 								<Button
@@ -146,7 +118,7 @@ function App() {
 								>
 									<ReactSVG
 										src="src/assets/linkedin.svg"
-										className="w-10 fill-secondary dark:fill-gray-100 flex items-center shadow-md"
+										className="flex w-10 items-center fill-secondary shadow-md dark:fill-gray-100"
 									/>
 								</Button>
 								<Button
@@ -159,41 +131,36 @@ function App() {
 								>
 									<ReactSVG
 										src="src/assets/email.svg"
-										className="w-9 fill-secondary dark:fill-gray-100 flex items-center shadow-md"
+										className="flex w-9 items-center fill-secondary shadow-md dark:fill-gray-100"
 									/>
 								</Button>
 							</div>
 						</div>
 					</div>
-					<div className="relative flex group">
+					<div className="group relative flex">
 						<img
 							src={profile_picture}
 							alt="profile_picture"
-							className="rounded-xl max-w-xs z-10 group-hover:shadow-lg group-hover:translate-x-[1%]
-							group-hover:translate-y-[1%] transition-all duration-100"
+							className="z-10 max-w-xs rounded-xl transition-all duration-100 group-hover:translate-x-[1%] group-hover:translate-y-[1%] group-hover:shadow-lg"
 						/>
-						<div
-							className="rounded-xl absolute inset-0 bg-gradient-to-br from-indigo-200 via-red-200
-							to-yellow-100 dark:bg-none dark:bg-gray-800 opacity-25 z-10 group-hover:translate-x-[1%]
-							group-hover:translate-y-[1%] group-hover:opacity-0 transition-all duration-100"
-						></div>
-						<div
-							className="rounded-xl absolute inset-0 translate-x-[4%] translate-y-[4%] ring-2
-							ring-orange-500 dark:ring-indigo-800 group-hover:translate-x-[3%]
-							group-hover:translate-y-[3%] transition-all duration-100"
-						></div>
+						<div className="absolute inset-0 z-10 rounded-xl bg-gradient-to-br from-indigo-200 via-red-200 to-yellow-100 opacity-25 transition-all duration-100 group-hover:translate-x-[1%] group-hover:translate-y-[1%] group-hover:opacity-0 dark:bg-gray-800 dark:bg-none"></div>
+						<div className="absolute inset-0 translate-x-[4%] translate-y-[4%] rounded-xl ring-2 ring-orange-500 transition-all duration-100 group-hover:translate-x-[3%] group-hover:translate-y-[3%] dark:ring-indigo-800"></div>
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-col items-center py-8 z-10">
-				<p className="text-4xl font-bold pb-16">Education</p>
+			<div className="z-10 flex flex-col items-center py-8">
+				<p className="pb-16 text-4xl font-bold">Education</p>
 				<div className="max-w-2xl space-y-4">
 					{education.map((item, index) => (
 						<Card className="rounded-md bg-slate-800" key={index}>
 							<CardHeader className="flex flex-col items-start">
-								<div className="flex w-full mb-2 justify-between">
-									<Chip color="primary" className="">{item.date}</Chip>
-									<Chip color="secondary" className="">{item.location}</Chip>
+								<div className="mb-2 flex w-full justify-between">
+									<Chip color="primary" className="">
+										{item.date}
+									</Chip>
+									<Chip color="secondary" className="">
+										{item.location}
+									</Chip>
 								</div>
 								<h1 className="text-xl font-bold">{item.title}</h1>
 								<p className="text-gray-800 dark:text-gray-100">{item.school}</p>
@@ -208,7 +175,7 @@ function App() {
 				</div>
 			</div>
 		</main>
-	)
+	);
 }
 
-export default App
+export default App;
