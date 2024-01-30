@@ -13,8 +13,10 @@ import {
 	Switch,
 	CardHeader,
 	Chip,
+	Spacer,
 } from "@nextui-org/react";
 import { useTheme } from "next-themes";
+import experience from "./content/experience.ts";
 
 function App() {
 	const { theme, setTheme } = useTheme();
@@ -24,27 +26,27 @@ function App() {
 				<NavbarContent justify="start"></NavbarContent>
 				<NavbarContent justify="center">
 					<NavbarItem>
-						<Button color="primary" variant="light" className="text-md font-semibold">
-							Education
-						</Button>
-					</NavbarItem>
-					<NavbarItem>
-						<Button color="primary" variant="light" className="text-md font-semibold">
+						<Button color="primary" variant="light" className="text-md font-semibold dark:text-gray-100">
 							Work Experience
 						</Button>
 					</NavbarItem>
 					<NavbarItem>
-						<Button color="primary" variant="light" className="text-md font-semibold">
+						<Button color="primary" variant="light" className="text-md font-semibold dark:text-gray-100">
+							Education
+						</Button>
+					</NavbarItem>
+					<NavbarItem>
+						<Button color="primary" variant="light" className="text-md font-semibold dark:text-gray-100">
 							Projects
 						</Button>
 					</NavbarItem>
 					<NavbarItem>
-						<Button color="primary" variant="light" className="text-md font-semibold">
+						<Button color="primary" variant="light" className="text-md font-semibold dark:text-gray-100">
 							Skills
 						</Button>
 					</NavbarItem>
 					<NavbarItem>
-						<Button color="secondary" variant="light" className="text-md font-semibold">
+						<Button color="secondary" variant="light" className="text-md font-semibold dark:text-gray-100">
 							Contact me
 						</Button>
 					</NavbarItem>
@@ -76,7 +78,7 @@ function App() {
 							Hello, I'm
 						</h1>
 						<div className="flex flex-col">
-							<p className="bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text font-mono text-5xl font-extrabold text-transparent">
+							<p className="bg-gradient-to-r from-blue-500 via-purple-500 via-30% to-orange-500 bg-clip-text font-mono text-5xl font-extrabold text-transparent dark:from-purple-600 dark:to-red-500">
 								Matthéo Lécrivain
 							</p>
 							<p className="py-4">
@@ -84,10 +86,7 @@ function App() {
 								Nantes University in France.
 							</p>
 							<div className="flex space-x-2">
-								<Button
-									color="primary"
-									className="text-md bg-orange-500 font-semibold shadow-md dark:bg-indigo-800"
-								>
+								<Button color="primary" className="text-md bg-primary font-semibold shadow-md">
 									Resume
 								</Button>
 								<Button color="secondary" variant="ghost" className="text-md font-semibold shadow-md">
@@ -144,15 +143,15 @@ function App() {
 							className="z-10 max-w-xs rounded-xl transition-all duration-100 group-hover:translate-x-[1%] group-hover:translate-y-[1%] group-hover:shadow-lg"
 						/>
 						<div className="absolute inset-0 z-10 rounded-xl bg-gradient-to-br from-indigo-200 via-red-200 to-yellow-100 opacity-25 transition-all duration-100 group-hover:translate-x-[1%] group-hover:translate-y-[1%] group-hover:opacity-0 dark:bg-gray-800 dark:bg-none"></div>
-						<div className="absolute inset-0 translate-x-[4%] translate-y-[4%] rounded-xl ring-2 ring-orange-500 transition-all duration-100 group-hover:translate-x-[3%] group-hover:translate-y-[3%] dark:ring-indigo-800"></div>
+						<div className="absolute inset-0 translate-x-[4%] translate-y-[4%] rounded-xl ring-2 ring-secondary transition-all duration-100 group-hover:translate-x-[3%] group-hover:translate-y-[3%]"></div>
 					</div>
 				</div>
 			</div>
 			<div className="z-10 flex flex-col items-center py-8">
-				<p className="pb-16 text-4xl font-bold">Education</p>
-				<div className="max-w-2xl space-y-4">
-					{education.map((item, index) => (
-						<Card className="rounded-md bg-slate-800" key={index}>
+				<p className="pb-16 text-4xl font-bold">Work Experience</p>
+				<div className="max-w-2xl space-y-4 pb-24">
+					{experience.map((item, index) => (
+						<Card className="rounded-md bg-opacity-50 dark:bg-slate-800" key={index}>
 							<CardHeader className="flex flex-col items-start">
 								<div className="mb-2 flex w-full justify-between">
 									<Chip color="primary" className="">
@@ -163,12 +162,47 @@ function App() {
 									</Chip>
 								</div>
 								<h1 className="text-xl font-bold">{item.title}</h1>
-								<p className="text-gray-800 dark:text-gray-100">{item.school}</p>
+								<p className="text-gray-600 dark:text-slate-400">{item.company}</p>
+							</CardHeader>
+							<CardBody className="flex flex-col pt-0">
+								<div className="pb-2">
+									{item.description.map((descriptionItem) => (
+										<div className="flex">
+											&bull;
+											<Spacer x={1} />
+											<p className="text-gray-800 dark:text-gray-100">{descriptionItem}</p>
+										</div>
+									))}
+								</div>
+								<div className="flex space-x-2">
+									{item.skills.map((skillsItem) => (
+										<Chip className="bg-slate-300 bg-opacity-50 dark:bg-slate-700">
+											{skillsItem}
+										</Chip>
+									))}
+								</div>
+							</CardBody>
+						</Card>
+					))}
+				</div>
+				<p className="pb-16 text-4xl font-bold">Education</p>
+				<div className="max-w-2xl space-y-4">
+					{education.map((item, index) => (
+						<Card className="rounded-md bg-opacity-50 dark:bg-slate-800" key={index}>
+							<CardHeader className="flex flex-col items-start">
+								<div className="mb-2 flex w-full justify-between">
+									<Chip color="primary" className="">
+										{item.date}
+									</Chip>
+									<Chip color="secondary" className="">
+										{item.location}
+									</Chip>
+								</div>
+								<h1 className="text-xl font-bold">{item.title}</h1>
+								<p className="text-gray-600 dark:text-slate-400">{item.school}</p>
 							</CardHeader>
 							<CardBody className="pt-0">
-								<div className="flex flex-col">
-									<p className="text-gray-800 dark:text-gray-100">{item.description}</p>
-								</div>
+								<p className="text-gray-800 dark:text-gray-100">{item.description}</p>
 							</CardBody>
 						</Card>
 					))}
