@@ -1,7 +1,7 @@
 export default [
 	{
-		category: 'Programming',
-		items : [
+		category: "Programming",
+		items: [
 			{
 				title: "Java",
 				icon: "/src/assets/skills/java.svg",
@@ -24,13 +24,13 @@ export default [
 			},
 			{
 				title: "Android",
-				icon: "/src/assets/skills/android.svg"
-			}
+				icon: "/src/assets/skills/android.svg",
+			},
 		],
 	},
 	{
-		category: 'Web Programming',
-		items : [
+		category: "Web Programming",
+		items: [
 			{
 				title: "React & React Native",
 				icon: "/src/assets/skills/react.svg",
@@ -62,8 +62,8 @@ export default [
 		],
 	},
 	{
-		category: 'Miscellaneous',
-		items : [
+		category: "Miscellaneous",
+		items: [
 			{
 				title: "Shell",
 				icon: "/src/assets/skills/shell.svg",
