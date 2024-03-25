@@ -13,6 +13,7 @@ export default [
 		],
 		skills: ["Vuejs", "TypeScript", "Tailwind CSS"],
 		cover: "src/assets/experience/clara.png",
+		link: "https://clara.univ-nantes.fr/",
 	},
 	{
 		title: "Front‐End Developer",

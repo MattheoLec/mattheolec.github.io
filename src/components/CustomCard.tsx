@@ -10,19 +10,26 @@ interface CustomCardProps {
 		description: string[];
 		skills?: string[];
 		cover?: string;
+		link?: string;
 	};
 	index: number;
 }
 
 const CustomCard = ({ data, index }: CustomCardProps) => {
 	return (
-		<div className="group grid grid-cols-4 justify-end" key={index}>
+		<div
+			className={`group grid grid-cols-4 justify-end ${data.link && "cursor-pointer"}`}
+			key={index}
+			onClick={() => {
+				data.link && window.open(data.link);
+			}}
+		>
 			{data.cover && (
 				<div className="relative col-[1/3] row-[1/1]">
 					<img
 						src={data.cover}
 						alt={data.entity}
-						className="absolute h-full rounded-md opacity-40 transition-all duration-150 group-hover:h-[110%] group-hover:-translate-x-[20%] group-hover:-translate-y-[5%] group-hover:opacity-100"
+						className="absolute h-full rounded-md opacity-40 shadow-medium transition-all duration-150 group-hover:h-[120%] group-hover:-translate-x-[20%] group-hover:-translate-y-[10%] group-hover:opacity-100"
 					/>
 				</div>
 			)}
@@ -31,13 +38,17 @@ const CustomCard = ({ data, index }: CustomCardProps) => {
 			>
 				<CardHeader className="flex flex-col items-start">
 					<div className="mb-2 flex w-full justify-between">
-						<Chip color="primary" className="">
-							{data.date}
-						</Chip>
+						<Chip color="primary">{data.date}</Chip>
 						{data.location && <Chip color="secondary">{data.location}</Chip>}
 					</div>
-					<h1 className="text-xl font-bold">
-						{data.title} {data.role && `- ${data.role}`}
+					<h1 className="flex text-xl font-bold">
+						{<p className={`${data.link && "group-hover:underline"}`}>{data.title}</p>}
+						{data.role && <p className={`${data.link && "group-hover:underline"}`}>&nbsp;- {data.role}</p>}
+						{data.link && (
+							<p className="font-serif font-semibold transition-transform duration-100 group-hover:-translate-y-[15%] group-hover:translate-x-[15%]">
+								&nbsp;↗
+							</p>
+						)}
 					</h1>
 					{data.entity && <p className="text-gray-600 dark:text-slate-400">{data.entity}</p>}
 				</CardHeader>
