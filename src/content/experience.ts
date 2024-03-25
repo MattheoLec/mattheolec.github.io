@@ -2,7 +2,7 @@ export default [
 	{
 		title: "Full‐Stack Developer",
 		role: "Intern",
-		company: "Laboratory of Digital Sciences of Nantes",
+		entity: "Laboratory of Digital Sciences of Nantes",
 		location: "Nantes, France",
 		date: "May 2023 ‐ Jul 2023",
 		description: [
@@ -12,11 +12,12 @@ export default [
 			"Maintained the application architecture all along its evolution.",
 		],
 		skills: ["Vuejs", "TypeScript", "Tailwind CSS"],
+		cover: "src/assets/experience/clara.png",
 	},
 	{
 		title: "Front‐End Developer",
 		role: "Intern",
-		company: "OpenDataSoft",
+		entity: "OpenDataSoft",
 		location: "Nantes, France",
 		date: "Apr 2022 - Jul 2022",
 		description: [
@@ -25,5 +26,6 @@ export default [
 			"Upgraded legacy Angular pages to React, modernizing the codebase and improving performance and maintainability.",
 		],
 		skills: ["React", "JavaScript", "CSS", "HTML", "Large-Scale Teamwork"],
+		cover: "",
 	},
 ];

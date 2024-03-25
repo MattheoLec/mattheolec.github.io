@@ -11,9 +11,6 @@ import {
 	Card,
 	CardBody,
 	Switch,
-	CardHeader,
-	Chip,
-	Spacer,
 	Input,
 	Textarea,
 } from "@nextui-org/react";
@@ -23,6 +20,7 @@ import projects from "./content/projects.ts";
 import skills from "./content/skills.ts";
 import { ElementRef, RefObject, useEffect, useRef, useState } from "react";
 import { getCurrentSectionIndex, SectionsType } from "./utils/utils.ts";
+import CustomCard from "./components/CustomCard.tsx";
 
 function App() {
 	const { theme, setTheme } = useTheme();
@@ -258,101 +256,29 @@ function App() {
 					</div>
 				</div>
 			</div>
-			<div ref={experienceRef} className="relative flex w-1/2 flex-col items-center">
+			<div ref={experienceRef} className="relative flex w-2/3 flex-col items-center">
 				<div className="absolute right-0 top-0 h-96 w-[46rem] -translate-y-1/3 translate-x-1/4 -rotate-[30deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0 blur-3xl dark:opacity-25"></div>
 				<h1 className="pb-16 text-4xl font-bold">Work Experience</h1>
-				<div className="w-full space-y-4 pb-24">
+				<div className="w-full space-y-16 pb-24">
 					{experience.map((item, index) => (
-						<Card className="rounded-md bg-opacity-50 dark:bg-slate-700 dark:bg-opacity-50" key={index}>
-							<CardHeader className="flex flex-col items-start">
-								<div className="mb-2 flex w-full justify-between">
-									<Chip color="primary" className="">
-										{item.date}
-									</Chip>
-									<Chip color="secondary" className="">
-										{item.location}
-									</Chip>
-								</div>
-								<h1 className="text-xl font-bold">{item.title}</h1>
-								<p className="text-gray-600 dark:text-slate-400">{item.company}</p>
-							</CardHeader>
-							<CardBody className="flex flex-col pt-0">
-								<div className="pb-2">
-									{item.description.map((descriptionItem) => (
-										<div className="flex">
-											&bull;
-											<Spacer x={1} />
-											<p className="text-gray-800 dark:text-gray-100">{descriptionItem}</p>
-										</div>
-									))}
-								</div>
-								<div className="flex space-x-2">
-									{item.skills.map((skillsItem) => (
-										<Chip className="bg-slate-300 bg-opacity-50 dark:bg-slate-700">
-											{skillsItem}
-										</Chip>
-									))}
-								</div>
-							</CardBody>
-						</Card>
+						<CustomCard data={item} index={index} />
 					))}
 				</div>
 			</div>
-			<div ref={educationRef} className="relative flex w-1/2 flex-col items-center">
+			<div ref={educationRef} className="relative flex w-2/3 flex-col items-center">
 				<div className="absolute left-0 top-0 h-96 w-[36rem] -translate-x-1/4 -translate-y-1/3 rotate-[20deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0 blur-3xl dark:opacity-25"></div>
 				<h1 className="pb-16 text-4xl font-bold">Education</h1>
 				<div className="w-full space-y-4 pb-24">
 					{education.map((item, index) => (
-						<Card className="rounded-md bg-opacity-50 dark:bg-slate-700 dark:bg-opacity-50" key={index}>
-							<CardHeader className="flex flex-col items-start">
-								<div className="mb-2 flex w-full justify-between">
-									<Chip color="primary" className="">
-										{item.date}
-									</Chip>
-									<Chip color="secondary" className="">
-										{item.location}
-									</Chip>
-								</div>
-								<h1 className="text-xl font-bold">{item.title}</h1>
-								<p className="text-gray-600 dark:text-slate-400">{item.school}</p>
-							</CardHeader>
-							<CardBody className="pt-0">
-								<p className="text-gray-800 dark:text-gray-100">{item.description}</p>
-							</CardBody>
-						</Card>
+						<CustomCard data={item} index={index} />
 					))}
 				</div>
 			</div>
-			<div ref={projectsRef} className="relative flex w-1/2 flex-col items-center">
+			<div ref={projectsRef} className="relative flex w-2/3 flex-col items-center">
 				<h1 className="pb-16 text-4xl font-bold">Projects</h1>
 				<div className="w-full space-y-4 pb-24">
 					{projects.map((item, index) => (
-						<Card className="rounded-md bg-opacity-50 dark:bg-slate-700 dark:bg-opacity-50" key={index}>
-							<CardHeader className="flex flex-col items-start">
-								<Chip color="primary" className="mb-2">
-									{item.date}
-								</Chip>
-								<h1 className="text-xl font-bold">{item.title}</h1>
-							</CardHeader>
-							<CardBody className="flex flex-col pt-0">
-								<div className="pb-2">
-									{item.description.map((descriptionItem) => (
-										<div className="flex">
-											&bull;
-											<Spacer x={1} />
-											<p className="text-gray-800 dark:text-gray-100">{descriptionItem}</p>
-										</div>
-									))}
-								</div>
-								<div className="flex space-x-2">
-									{item.skills.map((skillsItem) => (
-										<Chip className="bg-slate-300 bg-opacity-50 dark:bg-slate-700">
-											{skillsItem}
-										</Chip>
-									))}
-								</div>
-							</CardBody>
-						</Card>
+						<CustomCard data={item} index={index} />
 					))}
 				</div>
 			</div>
