@@ -163,17 +163,24 @@ function App() {
 					></Switch>
 				</NavbarContent>
 			</Navbar>
-			<div className="flex min-h-screen items-center justify-center">
+			<div className="flex min-h-screen w-5/6 items-center justify-center lg:w-4/5 xl:w-3/4 2xl:w-2/3">
 				<div className="relative flex items-center">
 					<div className="absolute left-0 top-2/3 h-48 w-1/2 -translate-x-[10%] -translate-y-1/2 rotate-[15deg] bg-gradient-to-tr from-red-900 to-purple-900 opacity-20 blur-3xl dark:opacity-60"></div>
 					<div className="z-10 w-full max-w-xl">
-						<h1 className="relative w-[max-content] whitespace-nowrap font-mono text-4xl font-extrabold text-gray-700 after:absolute after:inset-y-0 after:-right-2 after:w-1 after:animate-cursor after:bg-gray-700 dark:text-gray-100 after:dark:bg-gray-100">
-							{textToWrite}
-						</h1>
 						<div className="flex flex-col">
-							<p className="bg-gradient-to-r from-blue-500 via-purple-500 via-30% to-orange-500 bg-clip-text font-mono text-5xl font-extrabold text-transparent dark:from-purple-600 dark:to-red-500">
-								Matthéo Lécrivain
-							</p>
+							<div className="flex items-center gap-2">
+								<div className="flex h-fit basis-0 flex-col" id="test">
+									<h1 className="relative w-[max-content] whitespace-nowrap font-mono text-4xl font-extrabold text-gray-700 after:absolute after:inset-y-0 after:-right-2 after:w-1 after:animate-cursor after:bg-gray-700 dark:text-gray-100 after:dark:bg-gray-100">
+										{textToWrite}
+									</h1>
+									<p className="bg-gradient-to-r from-blue-500 via-purple-500 via-30% to-orange-500 bg-clip-text font-mono text-5xl font-extrabold text-transparent dark:from-purple-600 dark:to-red-500">
+										Matthéo Lécrivain
+									</p>
+								</div>
+								<div className="flex w-full justify-center lg:hidden">
+									<img src={profile_picture} alt="profile_picture" className="w-[196px] rounded-md" />
+								</div>
+							</div>
 							<p className="py-4">
 								Final‐year Master’s student in Computer Science specializing in Software Architecture at
 								Nantes University in France.
@@ -234,7 +241,7 @@ function App() {
 							</div>
 						</div>
 					</div>
-					<div className="group relative flex">
+					<div className="group relative hidden lg:flex">
 						<img
 							src={profile_picture}
 							alt="profile_picture"
@@ -248,7 +255,7 @@ function App() {
 			<div ref={experienceRef} className="relative flex w-5/6 flex-col items-center lg:w-4/5 xl:w-3/4 2xl:w-2/3">
 				<div className="absolute right-0 top-0 h-96 w-[46rem] -translate-y-1/3 translate-x-1/4 -rotate-[30deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0 blur-3xl dark:opacity-25"></div>
 				<h1 className="pb-16 text-4xl font-bold">Work Experience</h1>
-				<div className="w-full lg:space-y-16 space-y-8 pb-24">
+				<div className="w-full space-y-8 pb-24 lg:space-y-16">
 					{experience.map((item, index) => (
 						<CustomCard data={item} index={index} />
 					))}
