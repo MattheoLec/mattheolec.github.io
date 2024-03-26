@@ -2,18 +2,7 @@ import profile_picture from "./assets/profile_picture.jpg";
 import { ReactSVG } from "react-svg";
 import links from "./content/links.ts";
 import education from "./content/education.ts";
-import {
-	Button,
-	Link,
-	Navbar,
-	NavbarContent,
-	NavbarItem,
-	Card,
-	CardBody,
-	Switch,
-	Input,
-	Textarea,
-} from "@nextui-org/react";
+import { Button, Link, Navbar, NavbarContent, NavbarItem, Switch } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import experience from "./content/experience.ts";
 import projects from "./content/projects.ts";
@@ -178,7 +167,7 @@ function App() {
 				<div className="relative flex items-center">
 					<div className="absolute left-0 top-2/3 h-48 w-1/2 -translate-x-[10%] -translate-y-1/2 rotate-[15deg] bg-gradient-to-tr from-red-900 to-purple-900 opacity-20 blur-3xl dark:opacity-60"></div>
 					<div className="z-10 w-full max-w-xl">
-						<h1 className="relative w-[max-content] whitespace-nowrap font-mono text-4xl font-extrabold text-gray-800 after:absolute after:inset-y-0 after:-right-2 after:w-1 after:animate-cursor after:bg-gray-900 dark:text-gray-100 after:dark:bg-gray-100">
+						<h1 className="relative w-[max-content] whitespace-nowrap font-mono text-4xl font-extrabold text-gray-700 after:absolute after:inset-y-0 after:-right-2 after:w-1 after:animate-cursor after:bg-gray-700 dark:text-gray-100 after:dark:bg-gray-100">
 							{textToWrite}
 						</h1>
 						<div className="flex flex-col">
@@ -239,7 +228,7 @@ function App() {
 								>
 									<ReactSVG
 										src="src/assets/email.svg"
-										className="flex w-9 items-center fill-secondary shadow-md dark:fill-gray-100"
+										className="flex w-9 items-center fill-secondary dark:fill-gray-100"
 									/>
 								</Button>
 							</div>
@@ -275,6 +264,7 @@ function App() {
 				</div>
 			</div>
 			<div ref={projectsRef} className="relative flex w-2/3 flex-col items-center">
+				<div className="absolute right-0 top-0 h-96 w-[62rem] -translate-y-1/3 translate-x-3/4 -rotate-[60deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0  blur-3xl dark:opacity-15"></div>
 				<h1 className="pb-16 text-4xl font-bold">Projects</h1>
 				<div className="w-full space-y-4 pb-24">
 					{projects.map((item, index) => (
@@ -283,18 +273,21 @@ function App() {
 				</div>
 			</div>
 			<div ref={skillsRef} className="relative flex w-1/2 flex-col items-center">
+				<div className="absolute left-0 top-0 h-[32rem] w-[64rem] -translate-x-1/4 -translate-y-1/4 -rotate-[30deg] rounded-full bg-gradient-to-bl from-gray-700 via-purple-900 to-indigo-950 opacity-0 blur-3xl dark:opacity-15"></div>
 				<h1 className="pb-16 text-4xl font-bold">Skills</h1>
 				<div className="flex flex-col items-center space-y-8 pb-24">
 					{skills.map((skillsItem) => (
 						<div className="flex flex-col items-center space-y-8">
-							<h2 className="text-xl font-medium">{skillsItem.category}</h2>
+							<h2 className="text-xl font-medium text-gray-800 dark:text-gray-100">
+								{skillsItem.category}
+							</h2>
 							<div className="flex space-x-8">
 								{skillsItem.items.map((item) => (
 									<div className="group flex w-20 flex-col items-center">
 										<div className="rounded-full bg-slate-100 bg-opacity-50 p-2 shadow-lg transition-all duration-150 group-hover:-translate-y-[20%] dark:bg-slate-700">
 											<ReactSVG src={item.icon} className="flex h-14 w-14 dark:fill-gray-100" />
 										</div>
-										<p className="-translate-y-1/2 text-nowrap text-center font-medium opacity-0 transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100">
+										<p className="-translate-y-1/2 text-nowrap text-center font-medium text-gray-800 opacity-0 transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100 dark:text-gray-100">
 											{item.title}
 										</p>
 									</div>
@@ -304,49 +297,55 @@ function App() {
 					))}
 				</div>
 			</div>
-			<div className="flex w-2/3 flex-col items-center">
+			<div className="relative flex w-2/3 flex-col items-center">
+				<div className="absolute right-0 top-0 h-[32rem] w-[46rem] -translate-y-1/2 translate-x-1/2 rotate-[25deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0   blur-3xl dark:opacity-15"></div>
 				<h1 ref={contactRef} className="pb-16 text-4xl font-bold">
 					Contact me
 				</h1>
-				<Card className="w-full dark:bg-slate-800" isBlurred>
-					<CardBody className="grid grid-cols-2 space-x-4 p-6">
-						<div className="flex flex-col space-y-2">
-							<h2 className="pb-2 text-xl font-semibold">Let's keep in touch!</h2>
-							<p>
-								GitHub :{" "}
-								<Link href={links.GitHub.full} target="_blank" className="text-blue-600">
-									{links.GitHub.short}
-								</Link>
-							</p>
-							<p>
-								LinkedIn :{" "}
-								<Link href={links.LinkedIn.full} target="_blank" className="text-blue-600">
-									{links.LinkedIn.short}
-								</Link>
-							</p>
-							<p>
-								Email :{" "}
-								<Link href={links.Email.full} className="text-blue-600">
-									{links.Email.short}
-								</Link>
-							</p>
-						</div>
-						<div className="flex flex-col space-y-4">
-							<h2 className="text-center text-xl font-semibold">Send me a message</h2>
-							<Input type="email" label="Email" color="default" className="light" />
-							<Textarea label="Message" className="light" minRows={5} />
-							<Button
-								title="Send"
-								color="primary"
-								className="w-fit light"
-								endContent={<ReactSVG src="src/assets/send.svg" className="h-4 w-4 fill-gray-100" />}
-							>
-								Send
-							</Button>
-						</div>
-					</CardBody>
-				</Card>
-				<div className="flex flex-col items-center py-8">
+				<p className="font-semibold text-gray-800 dark:text-gray-100">
+					I'm currently open for{" "}
+					<span className="font-bold text-blue-700 dark:text-blue-500">Front-end positions</span>.
+				</p>
+				<p className="font-semibold text-gray-800 dark:text-gray-100">
+					Feel free to reach out to me for any inquiries.
+				</p>
+				<div className="flex space-x-4 pt-8">
+					<Button
+						color="primary"
+						className="text-md gap-2 bg-primary p-3 font-semibold shadow-md"
+						aria-label="LinkedIn"
+						as={Link}
+						href={links.LinkedIn.full}
+						target="_blank"
+						startContent={
+							<ReactSVG src="src/assets/linkedin.svg" className="flex w-5 items-center fill-gray-100" />
+						}
+					>
+						LinkedIn
+					</Button>
+					<Button
+						color="primary"
+						className="text-md gap-2 bg-primary p-3 font-semibold shadow-md"
+						aria-label="Email"
+						as={Link}
+						href={links.Email.full}
+						startContent={
+							<ReactSVG src="src/assets/email.svg" className="flex w-5 items-center fill-gray-100" />
+						}
+					>
+						Email
+					</Button>
+					<Button
+						color="primary"
+						className="text-md gap-2 bg-primary p-3 font-semibold shadow-md"
+						startContent={
+							<ReactSVG src="src/assets/resume.svg" className="flex w-5 items-center fill-gray-100" />
+						}
+					>
+						Resume
+					</Button>
+				</div>
+				<div className="flex flex-col items-center pb-8 pt-32">
 					<Link
 						href="https://github.com/MattheoLec/portfolio-mattheo-lec"
 						isExternal

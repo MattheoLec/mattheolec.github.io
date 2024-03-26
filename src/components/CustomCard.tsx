@@ -65,7 +65,9 @@ const CustomCard = ({ data, index }: CustomCardProps) => {
 					{data.skills && (
 						<div className="flex space-x-2">
 							{data.skills.map((skillsItem) => (
-								<Chip className="bg-slate-300 bg-opacity-50 dark:bg-sky-950">{skillsItem}</Chip>
+								<Chip className="bg-slate-300 bg-opacity-50 text-gray-800 dark:bg-sky-950 dark:text-gray-100">
+									{skillsItem}
+								</Chip>
 							))}
 						</div>
 					)}
