@@ -11,6 +11,7 @@ export default {
 		extend: {
 			animation: {
 				cursor: "cursor-blink 1.2s infinite",
+				"infinite-scroll": "infinite-scroll 15s linear infinite",
 			},
 			keyframes: {
 				"cursor-blink": {
@@ -20,6 +21,10 @@ export default {
 					"50%, 90%": {
 						opacity: 0,
 					},
+				},
+				"infinite-scroll": {
+					from: { transform: "translateX(0)" },
+					to: { transform: "translateX(-50%)" },
 				},
 			},
 		},

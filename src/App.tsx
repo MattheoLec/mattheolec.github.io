@@ -20,6 +20,7 @@ import skills from "./content/skills.ts";
 import { ElementRef, RefObject, useEffect, useRef, useState } from "react";
 import { getCurrentSectionIndex, SectionsType } from "./utils/utils.ts";
 import CustomCard from "./components/CustomCard.tsx";
+import SkillsCards from "./components/SkillsCards.tsx";
 
 function App() {
 	const { theme, setTheme } = useTheme();
@@ -310,26 +311,27 @@ function App() {
 					))}
 				</div>
 			</div>
-			<div ref={skillsRef} className="relative flex w-5/6 flex-col items-center lg:w-4/5 xl:w-3/4 2xl:w-2/3">
+			<div
+				ref={skillsRef}
+				className="relative flex w-full flex-col items-center md:w-5/6 lg:w-4/5 xl:w-3/4 2xl:w-2/3"
+			>
 				<div className="absolute left-0 top-0 h-[32rem] w-[64rem] -translate-x-1/4 -translate-y-1/4 -rotate-[30deg] rounded-full bg-gradient-to-bl from-gray-700 via-purple-900 to-indigo-950 opacity-0 blur-3xl dark:opacity-15"></div>
 				<h1 className="pb-16 text-4xl font-bold">Skills</h1>
-				<div className="z-10 flex flex-col items-center space-y-8 pb-24">
+				<div className="z-10 flex w-full flex-col items-center space-y-8 pb-24">
 					{skills.map((skillsItem) => (
-						<div className="flex flex-col items-center space-y-8">
-							<h2 className="text-xl font-medium text-gray-800 dark:text-gray-100">
+						<div
+							className={`flex w-full flex-col space-y-8 md:items-center ${skillsItem.category === "Miscellaneous" && "items-center"}`}
+						>
+							<h2 className="text-center text-xl font-medium text-gray-800 dark:text-gray-100">
 								{skillsItem.category}
 							</h2>
-							<div className="flex space-x-8">
-								{skillsItem.items.map((item) => (
-									<div className="group flex w-20 flex-col items-center">
-										<div className="rounded-full bg-slate-100 bg-opacity-50 p-2 shadow-lg transition-all duration-150 group-hover:-translate-y-[20%] dark:bg-slate-700">
-											<ReactSVG src={item.icon} className="flex h-14 w-14 dark:fill-gray-100" />
-										</div>
-										<p className="-translate-y-1/2 text-nowrap text-center font-medium text-gray-800 opacity-0 transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100 dark:text-gray-100">
-											{item.title}
-										</p>
-									</div>
-								))}
+							<div
+								className={`flex w-fit md:animate-none ${skillsItem.category !== "Miscellaneous" && "animate-infinite-scroll"}`}
+							>
+								<SkillsCards skillsItem={skillsItem} />
+								{skillsItem.category !== "Miscellaneous" && window.innerWidth < 768 && (
+									<SkillsCards skillsItem={skillsItem} />
+								)}
 							</div>
 						</div>
 					))}
