@@ -1,4 +1,6 @@
-const SECTIONS_NAMES = {
+import React from "react";
+
+const SECTIONS_IDS = {
 	NONE: "none",
 	EXPERIENCE: "experience",
 	EDUCATION: "education",
@@ -8,27 +10,31 @@ const SECTIONS_NAMES = {
 } as const;
 
 type ObjectValues<T> = T[keyof T];
-type SectionsNamesType = ObjectValues<typeof SECTIONS_NAMES>;
+type SectionsIdsType = ObjectValues<typeof SECTIONS_IDS>;
 
 export type SectionsType = {
-	name: SectionsNamesType;
-	offsetTop: number;
-	size: number;
+	id: SectionsIdsType;
+	name: string;
+	ref: React.RefObject<React.ElementRef<"h1">>;
 };
 
 export const getCurrentSectionIndex = (
 	scrollY: number,
 	windowSize: number,
 	sectionsOffsetList: SectionsType[],
-): SectionsNamesType => {
+): SectionsIdsType => {
 	for (let i = 0; i < sectionsOffsetList.length; i++) {
 		if (
-			Math.min(scrollY + windowSize, sectionsOffsetList[i].offsetTop + sectionsOffsetList[i].size) -
-				Math.max(scrollY, sectionsOffsetList[i].offsetTop) >
+			Math.min(
+				scrollY + windowSize,
+				(sectionsOffsetList[i].ref.current?.offsetTop as number) +
+					(sectionsOffsetList[i].ref.current?.offsetHeight as number),
+			) -
+				Math.max(scrollY, sectionsOffsetList[i].ref.current?.offsetTop as number) >
 			windowSize / 2
 		) {
-			return sectionsOffsetList[i].name;
+			return sectionsOffsetList[i].id;
 		}
 	}
-	return SECTIONS_NAMES.NONE;
+	return SECTIONS_IDS.NONE;
 };

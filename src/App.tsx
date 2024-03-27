@@ -2,7 +2,17 @@ import profile_picture from "./assets/profile_picture.jpg";
 import { ReactSVG } from "react-svg";
 import links from "./content/links.ts";
 import education from "./content/education.ts";
-import { Button, Link, Navbar, NavbarContent, NavbarItem, Switch } from "@nextui-org/react";
+import {
+	Button,
+	Link,
+	Navbar,
+	NavbarContent,
+	NavbarItem,
+	NavbarMenu,
+	NavbarMenuItem,
+	NavbarMenuToggle,
+	Switch,
+} from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import experience from "./content/experience.ts";
 import projects from "./content/projects.ts";
@@ -15,6 +25,8 @@ function App() {
 	const { theme, setTheme } = useTheme();
 	const [textToWrite, setTextToWrite] = useState<string>("");
 	const [currentSection, setCurrentSection] = useState<string>("");
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+	const [sections, setSections] = useState<SectionsType[]>([]);
 	const experienceRef = useRef<ElementRef<"h1">>(null);
 	const educationRef = useRef<ElementRef<"h1">>(null);
 	const projectsRef = useRef<ElementRef<"h1">>(null);
@@ -44,41 +56,34 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		if (
-			!experienceRef.current ||
-			!educationRef.current ||
-			!projectsRef.current ||
-			!skillsRef.current ||
-			!contactRef.current
-		)
-			return;
 		const sections: SectionsType[] = [
 			{
-				name: "experience",
-				offsetTop: experienceRef.current.offsetTop,
-				size: experienceRef.current.offsetHeight,
+				id: "experience",
+				name: "Work Experience",
+				ref: experienceRef,
 			},
 			{
-				name: "education",
-				offsetTop: educationRef.current.offsetTop,
-				size: educationRef.current.offsetHeight,
+				id: "education",
+				name: "Education",
+				ref: educationRef,
 			},
 			{
-				name: "projects",
-				offsetTop: projectsRef.current.offsetTop,
-				size: projectsRef.current.offsetHeight,
+				id: "projects",
+				name: "Projects",
+				ref: projectsRef,
 			},
 			{
-				name: "skills",
-				offsetTop: skillsRef.current.offsetTop,
-				size: skillsRef.current.offsetHeight,
+				id: "skills",
+				name: "Skills",
+				ref: skillsRef,
 			},
 			{
-				name: "contact",
-				offsetTop: contactRef.current.offsetTop,
-				size: contactRef.current.offsetHeight,
+				id: "contact",
+				name: "Contact me",
+				ref: contactRef,
 			},
 		];
+		setSections(sections);
 		const handleScroll = () => {
 			const sectionName = getCurrentSectionIndex(window.scrollY, window.innerHeight, sections);
 			setCurrentSection(sectionName);
@@ -93,9 +98,14 @@ function App() {
 		<main className="relative flex w-full flex-col items-center overflow-x-hidden bg-gradient-to-br from-indigo-200 via-red-200 to-yellow-100 dark:bg-gray-900 dark:bg-none">
 			<div className="absolute left-0 top-0 h-64 w-[32rem] -rotate-[20deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0 blur-3xl dark:opacity-25"></div>
 			<div className="absolute right-0 top-0 h-48 w-64 translate-x-[10%] -rotate-12 bg-gradient-to-tr from-indigo-900 to-gray-800 opacity-0 blur-3xl dark:opacity-50"></div>
-			<Navbar maxWidth="full" className="fixed z-50 bg-black bg-opacity-10">
+			<Navbar
+				maxWidth="full"
+				className="fixed z-50 bg-black bg-opacity-10"
+				isMenuOpen={isMenuOpen}
+				onMenuOpenChange={setIsMenuOpen}
+			>
 				<NavbarContent justify="start"></NavbarContent>
-				<NavbarContent justify="center">
+				<NavbarContent justify="center" className="hidden lg:flex">
 					<NavbarItem>
 						<Button
 							color="primary"
@@ -147,6 +157,22 @@ function App() {
 						</Button>
 					</NavbarItem>
 				</NavbarContent>
+				<NavbarMenu className="space-y-2 bg-black bg-opacity-10">
+					{sections.map((item, index) => (
+						<NavbarMenuItem key={`${item}-${index}`}>
+							<Button
+								color="primary"
+								variant="light"
+								className="text-lg font-semibold dark:text-gray-100"
+								size="lg"
+								onPress={() => setIsMenuOpen(false)}
+								onClick={() => scrollToSection(item.ref)}
+							>
+								{item.name}
+							</Button>
+						</NavbarMenuItem>
+					))}
+				</NavbarMenu>
 				<NavbarContent justify="end">
 					<Switch
 						isSelected={theme === "dark"}
@@ -161,6 +187,7 @@ function App() {
 							)
 						}
 					></Switch>
+					<NavbarMenuToggle className="lg:hidden" aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
 				</NavbarContent>
 			</Navbar>
 			<div className="flex min-h-screen w-5/6 items-center justify-center lg:w-4/5 xl:w-3/4 2xl:w-2/3">
@@ -178,7 +205,11 @@ function App() {
 									</p>
 								</div>
 								<div className="flex w-full justify-center lg:hidden">
-									<img src={profile_picture} alt="profile_picture" className="w-[196px] rounded-md" />
+									<img
+										src={profile_picture}
+										alt="profile_picture"
+										className="w-[196px] rounded-medium"
+									/>
 								</div>
 							</div>
 							<p className="py-4">
@@ -282,7 +313,7 @@ function App() {
 			<div ref={skillsRef} className="relative flex w-5/6 flex-col items-center lg:w-4/5 xl:w-3/4 2xl:w-2/3">
 				<div className="absolute left-0 top-0 h-[32rem] w-[64rem] -translate-x-1/4 -translate-y-1/4 -rotate-[30deg] rounded-full bg-gradient-to-bl from-gray-700 via-purple-900 to-indigo-950 opacity-0 blur-3xl dark:opacity-15"></div>
 				<h1 className="pb-16 text-4xl font-bold">Skills</h1>
-				<div className="flex flex-col items-center space-y-8 pb-24">
+				<div className="z-10 flex flex-col items-center space-y-8 pb-24">
 					{skills.map((skillsItem) => (
 						<div className="flex flex-col items-center space-y-8">
 							<h2 className="text-xl font-medium text-gray-800 dark:text-gray-100">
