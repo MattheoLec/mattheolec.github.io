@@ -23,6 +23,8 @@ export const getCurrentSectionIndex = (
 	windowSize: number,
 	sectionsOffsetList: SectionsType[],
 ): SectionsIdsType => {
+	if (scrollY + windowSize >= document.body.offsetHeight - 10)
+		return sectionsOffsetList[sectionsOffsetList.length - 1].id;
 	for (let i = 0; i < sectionsOffsetList.length; i++) {
 		if (
 			Math.min(
