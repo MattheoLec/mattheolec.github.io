@@ -36,7 +36,7 @@ const CustomCard = ({ data, index }: CustomCardProps) => {
 						{data.location && <Chip color="secondary">{data.location}</Chip>}
 					</div>
 					<Link
-						className="group/title flex text-xl font-bold text-gray-800 dark:text-gray-100"
+						className="group/title flex flex-wrap text-xl font-bold text-gray-800 dark:text-gray-100"
 						href={data.link}
 						target="_blank"
 					>

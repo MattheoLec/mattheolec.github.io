@@ -12,7 +12,7 @@ export default [
 			"Maintained the application architecture all along its evolution.",
 		],
 		skills: ["Vuejs", "TypeScript", "Tailwind CSS"],
-		cover: "src/assets/experience/clara.png",
+		cover: "/experience/clara.png",
 		link: "https://clara.univ-nantes.fr/",
 	},
 	{

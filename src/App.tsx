@@ -1,4 +1,4 @@
-import profile_picture from "./assets/profile_picture.jpg";
+import profile_picture from "/profile_picture.jpg";
 import { ReactSVG } from "react-svg";
 import links from "./content/links.ts";
 import education from "./content/education.ts";
@@ -23,7 +23,7 @@ import CustomCard from "./components/CustomCard.tsx";
 import SkillsCards from "./components/SkillsCards.tsx";
 
 function App() {
-	const { theme, setTheme } = useTheme();
+	const { resolvedTheme, setTheme } = useTheme();
 	const [textToWrite, setTextToWrite] = useState<string>("");
 	const [currentSection, setCurrentSection] = useState<string>("");
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -176,15 +176,15 @@ function App() {
 				</NavbarMenu>
 				<NavbarContent justify="end">
 					<Switch
-						isSelected={theme === "dark"}
-						onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
+						isSelected={resolvedTheme === "dark"}
+						onChange={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
 						size="lg"
 						color="secondary"
 						thumbIcon={({ isSelected }) =>
 							isSelected ? (
-								<ReactSVG src="src/assets/moon.svg" className="w-[80%] fill-[#7828c8]" />
+								<ReactSVG src="/moon.svg" className="w-[80%] fill-[#7828c8]" />
 							) : (
-								<ReactSVG src="src/assets/sun.svg" className="w-[80%] fill-gray-800" />
+								<ReactSVG src="/sun.svg" className="w-[80%] fill-gray-800" />
 							)
 						}
 					></Switch>
@@ -239,7 +239,7 @@ function App() {
 									target="_blank"
 								>
 									<ReactSVG
-										src="src/assets/github.svg"
+										src="/github.svg"
 										className="flex w-10 items-center fill-secondary shadow-md dark:fill-gray-100"
 									/>
 								</Button>
@@ -253,7 +253,7 @@ function App() {
 									target="_blank"
 								>
 									<ReactSVG
-										src="src/assets/linkedin.svg"
+										src="/linkedin.svg"
 										className="flex w-10 items-center fill-secondary shadow-md dark:fill-gray-100"
 									/>
 								</Button>
@@ -266,7 +266,7 @@ function App() {
 									href={links.Email.full}
 								>
 									<ReactSVG
-										src="src/assets/email.svg"
+										src="/email.svg"
 										className="flex w-9 items-center fill-secondary dark:fill-gray-100"
 									/>
 								</Button>
@@ -358,7 +358,7 @@ function App() {
 						href={links.LinkedIn.full}
 						target="_blank"
 						startContent={
-							<ReactSVG src="src/assets/linkedin.svg" className="flex w-5 items-center fill-gray-100" />
+							<ReactSVG src="/linkedin.svg" className="flex w-5 items-center fill-gray-100" />
 						}
 					>
 						LinkedIn
@@ -370,7 +370,7 @@ function App() {
 						as={Link}
 						href={links.Email.full}
 						startContent={
-							<ReactSVG src="src/assets/email.svg" className="flex w-5 items-center fill-gray-100" />
+							<ReactSVG src="/email.svg" className="flex w-5 items-center fill-gray-100" />
 						}
 					>
 						Email
@@ -379,7 +379,7 @@ function App() {
 						color="primary"
 						className="text-md gap-2 bg-primary p-3 font-semibold shadow-md"
 						startContent={
-							<ReactSVG src="src/assets/resume.svg" className="flex w-5 items-center fill-gray-100" />
+							<ReactSVG src="/resume.svg" className="flex w-5 items-center fill-gray-100" />
 						}
 					>
 						Resume
@@ -392,7 +392,7 @@ function App() {
 						showAnchorIcon
 						anchorIcon={
 							<ReactSVG
-								src="src/assets/github.svg"
+								src="/github.svg"
 								className="ml-1 flex w-6 items-center fill-gray-800 dark:fill-gray-100"
 							/>
 						}

@@ -1,6 +1,6 @@
 {
 	"name": "portfolio-mattheo-lec",
-	"homepage": "https://mattheolec.github.io/portfolio-mattheo-lec",
+	"homepage": "https://mattheolec.github.io/",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
@@ -10,7 +10,7 @@
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"predeploy": "vite build",
-		"deploy": "gh-pages -d build"
+		"deploy": "gh-pages -d dist"
 	},
 	"lint-staged": {
 		"**/*": "prettier --write --ignore-unknown"
