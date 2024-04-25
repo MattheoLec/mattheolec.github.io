@@ -27,6 +27,6 @@ export default [
 			"Upgraded legacy Angular pages to React, modernizing the codebase and improving performance and maintainability.",
 		],
 		skills: ["React", "JavaScript", "CSS", "HTML", "Large-Scale Teamwork"],
-		cover: "",
+		link: "https://www.opendatasoft.com/",
 	},
 ];

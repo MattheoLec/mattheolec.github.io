@@ -36,19 +36,23 @@ const CustomCard = ({ data, index }: CustomCardProps) => {
 						{data.location && <Chip color="secondary">{data.location}</Chip>}
 					</div>
 					<Link
-						className="group/title flex flex-wrap text-xl font-bold text-gray-800 dark:text-gray-100"
+						className={`group/title flex select-text flex-wrap text-xl font-bold text-gray-800 dark:text-gray-100 ${!data.link && "pointer-events-none"}`}
 						href={data.link}
 						target="_blank"
 					>
-						{<p className={`${data.link && "group-hover/title:underline"}`}>{data.title}</p>}
-						{data.role && (
-							<p className={`${data.link && "group-hover/title:underline"}`}>&nbsp;- {data.role}</p>
-						)}
-						{data.link && (
-							<p className="font-serif font-semibold transition-transform duration-100 group-hover/title:-translate-y-[15%] group-hover/title:translate-x-[15%]">
-								&nbsp;↗
-							</p>
-						)}
+						<p>
+							{<span className={`${data.link && "group-hover/title:underline"}`}>{data.title}</span>}
+							{data.role && (
+								<span className={`${data.link && "group-hover/title:underline"}`}>
+									&nbsp;- {data.role}
+								</span>
+							)}
+							{data.link && (
+								<span className="font-serif font-semibold transition-transform duration-100 group-hover/title:-translate-y-[15%] group-hover/title:translate-x-[15%]">
+									&nbsp;↗
+								</span>
+							)}
+						</p>
 					</Link>
 					{data.entity && <p className="text-gray-600 dark:text-slate-400">{data.entity}</p>}
 				</CardHeader>

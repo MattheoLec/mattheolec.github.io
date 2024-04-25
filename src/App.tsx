@@ -357,9 +357,7 @@ function App() {
 						as={Link}
 						href={links.LinkedIn.full}
 						target="_blank"
-						startContent={
-							<ReactSVG src="/linkedin.svg" className="flex w-5 items-center fill-gray-100" />
-						}
+						startContent={<ReactSVG src="/linkedin.svg" className="flex w-5 items-center fill-gray-100" />}
 					>
 						LinkedIn
 					</Button>
@@ -369,18 +367,14 @@ function App() {
 						aria-label="Email"
 						as={Link}
 						href={links.Email.full}
-						startContent={
-							<ReactSVG src="/email.svg" className="flex w-5 items-center fill-gray-100" />
-						}
+						startContent={<ReactSVG src="/email.svg" className="flex w-5 items-center fill-gray-100" />}
 					>
 						Email
 					</Button>
 					<Button
 						color="primary"
 						className="text-md gap-2 bg-primary p-3 font-semibold shadow-md"
-						startContent={
-							<ReactSVG src="/resume.svg" className="flex w-5 items-center fill-gray-100" />
-						}
+						startContent={<ReactSVG src="/resume.svg" className="flex w-5 items-center fill-gray-100" />}
 					>
 						Resume
 					</Button>
