@@ -344,7 +344,7 @@ function App() {
 				</h1>
 				<p className="font-semibold text-gray-800 dark:text-gray-100">
 					I'm currently open for{" "}
-					<span className="font-bold text-blue-700 dark:text-blue-500">Front-end positions</span>.
+					<span className="font-bold text-blue-700 dark:text-blue-500">Frontend Developer positions</span>.
 				</p>
 				<p className="font-semibold text-gray-800 dark:text-gray-100">
 					Feel free to reach out to me for any inquiries.

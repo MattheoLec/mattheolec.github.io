@@ -47,12 +47,12 @@ const CustomCard = ({ data, index }: CustomCardProps) => {
 									&nbsp;- {data.role}
 								</span>
 							)}
-							{data.link && (
-								<span className="font-serif font-semibold transition-transform duration-100 group-hover/title:-translate-y-[15%] group-hover/title:translate-x-[15%]">
-									&nbsp;↗
-								</span>
-							)}
 						</p>
+						{data.link && (
+							<p className="font-serif font-semibold transition-transform duration-100 group-hover/title:-translate-y-[15%] group-hover/title:translate-x-[15%]">
+								&nbsp;↗
+							</p>
+						)}
 					</Link>
 					{data.entity && <p className="text-gray-600 dark:text-slate-400">{data.entity}</p>}
 				</CardHeader>
