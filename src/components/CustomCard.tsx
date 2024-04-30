@@ -1,4 +1,5 @@
 import { Card, CardBody, CardHeader, Chip, Link, Spacer } from "@nextui-org/react";
+import { ReactSVG } from "react-svg";
 
 interface CustomCardProps {
 	data: {
@@ -36,7 +37,7 @@ const CustomCard = ({ data, index }: CustomCardProps) => {
 						{data.location && <Chip color="secondary">{data.location}</Chip>}
 					</div>
 					<Link
-						className={`group/title flex select-text flex-wrap text-xl font-bold text-gray-800 dark:text-gray-100 ${!data.link && "pointer-events-none"}`}
+						className={`group/title flex select-text flex-wrap items-end text-xl font-bold text-gray-800 dark:text-gray-100 ${!data.link && "pointer-events-none"}`}
 						href={data.link}
 						target="_blank"
 					>
@@ -49,9 +50,10 @@ const CustomCard = ({ data, index }: CustomCardProps) => {
 							)}
 						</p>
 						{data.link && (
-							<p className="font-serif font-semibold transition-transform duration-100 group-hover/title:-translate-y-[15%] group-hover/title:translate-x-[15%]">
-								&nbsp;↗
-							</p>
+							<ReactSVG
+								src="arrow_outward.svg"
+								className="ml-0.5 h-6 w-6 fill-gray-800 transition-transform duration-100 group-hover/title:-translate-y-[15%] group-hover/title:translate-x-[15%] dark:fill-gray-100"
+							/>
 						)}
 					</Link>
 					{data.entity && <p className="text-gray-600 dark:text-slate-400">{data.entity}</p>}
