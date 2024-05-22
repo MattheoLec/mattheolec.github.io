@@ -1,5 +1,17 @@
 export default [
 	{
+		title: "Software Architecture Researcher",
+		role: "Intern",
+		entity: "Université de Montréal",
+		location: "Montréal, Canada",
+		date: "Jan 2024 - Jul 2024",
+		description: [
+			"Designed and developed a tool to identify microservices in monolithic applications, combining metaheuristic optimization and machine learning.",
+			"Created a fully automatic REST API generator, in order to expose identified services and enable them to operate independently.",
+		],
+		skills: ["Python", "Software Architecture", "Machine Learning", "Scientific Method"],
+	},
+	{
 		title: "Full‐Stack Developer",
 		role: "Intern",
 		entity: "Laboratory of Digital Sciences of Nantes",

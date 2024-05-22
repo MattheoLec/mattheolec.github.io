@@ -218,7 +218,13 @@ function App() {
 								Nantes University in France.
 							</p>
 							<div className="flex space-x-2">
-								<Button color="primary" className="text-md bg-primary font-semibold shadow-md">
+								<Button
+									color="primary"
+									className="text-md bg-primary font-semibold shadow-md"
+									as={Link}
+									href={links.Resume.full}
+									target="_blank"
+								>
 									Resume
 								</Button>
 								<Button
@@ -374,6 +380,10 @@ function App() {
 					<Button
 						color="primary"
 						className="text-md gap-2 bg-primary p-3 font-semibold shadow-md"
+						aria-label="Resume"
+						as={Link}
+						href={links.Resume.full}
+						target="_blank"
 						startContent={<ReactSVG src="/resume.svg" className="flex w-5 items-center fill-gray-100" />}
 					>
 						Resume
@@ -381,7 +391,7 @@ function App() {
 				</div>
 				<div className="flex flex-col items-center pb-8 pt-32">
 					<Link
-						href="https://github.com/MattheoLec/portfolio-mattheo-lec"
+						href="https://github.com/MattheoLec/mattheolec.github.io"
 						isExternal
 						showAnchorIcon
 						anchorIcon={
