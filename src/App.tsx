@@ -215,7 +215,7 @@ function App() {
 							</div>
 							<p className="py-4">
 								Final‐year Master’s student in Computer Science specializing in Software Architecture at
-								Nantes University in France.
+								Nantes University in France, graduating in July 2024.
 							</p>
 							<div className="flex space-x-2">
 								<Button
@@ -343,7 +343,10 @@ function App() {
 					))}
 				</div>
 			</div>
-			<div ref={contactRef} className="relative flex w-5/6 flex-col items-center lg:w-4/5 xl:w-3/4 2xl:w-2/3">
+			<div
+				ref={contactRef}
+				className="relative flex w-5/6 flex-col items-center text-balance text-center lg:w-4/5 xl:w-3/4 2xl:w-2/3"
+			>
 				<div className="absolute right-0 top-0 h-[32rem] w-[46rem] -translate-y-1/2 translate-x-1/2 rotate-[25deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0   blur-3xl dark:opacity-15"></div>
 				<h1 ref={contactRef} className="pb-16 text-4xl font-bold">
 					Contact me
