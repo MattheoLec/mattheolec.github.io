@@ -311,7 +311,7 @@ function App() {
 			<div ref={projectsRef} className="relative flex w-5/6 flex-col items-center lg:w-4/5 xl:w-3/4 2xl:w-2/3">
 				<div className="absolute right-0 top-0 h-96 w-[62rem] -translate-y-1/3 translate-x-3/4 -rotate-[60deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0  blur-3xl dark:opacity-15"></div>
 				<h1 className="pb-16 text-4xl font-bold">Projects</h1>
-				<div className="w-full space-y-8 pb-24">
+				<div className="w-full space-y-8 pb-24 lg:space-y-16">
 					{projects.map((item, index) => (
 						<CustomCard data={item} index={index} />
 					))}
@@ -347,7 +347,7 @@ function App() {
 				ref={contactRef}
 				className="relative flex w-5/6 flex-col items-center text-balance text-center lg:w-4/5 xl:w-3/4 2xl:w-2/3"
 			>
-				<div className="absolute right-0 top-0 h-[32rem] w-[46rem] -translate-y-1/2 translate-x-1/2 rotate-[25deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0   blur-3xl dark:opacity-15"></div>
+				<div className="absolute right-0 top-0 h-[32rem] w-[46rem] -translate-y-1/2 translate-x-1/2 rotate-[25deg] rounded-full bg-gradient-to-bl from-purple-900 to-gray-700 opacity-0 blur-3xl dark:opacity-15"></div>
 				<h1 ref={contactRef} className="pb-16 text-4xl font-bold">
 					Contact me
 				</h1>

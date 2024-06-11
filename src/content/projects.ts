@@ -7,6 +7,7 @@ export default [
 			"This work enables teachers to easily consult their courses and suggest changes to the timetabling department.",
 		],
 		skills: ["React", "TypeScript", "Tailwind CSS", "Agile Development"],
+		cover: "/experience/naocal.png",
 		link: "https://gitlab.univ-nantes.fr/edt_capestone_group/capstone/-/tree/main/client",
 	},
 	{
